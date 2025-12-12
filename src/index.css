@@ -1,6 +1,14 @@
 @import 'tailwindcss';
 
 @theme {
+  /* Space Galaxy Glow Palette */
+  --color-space-black: #0a0118;
+  --color-nebula-cyan: #00d9ff;
+  --color-nebula-violet: #8b5cf6;
+  --color-cosmic-gold: #fbbf24;
+  --color-star-white: #ffffff;
+  
+  /* Original colors for game board */
   --color-accent: #2563eb;
   --color-accent-light: #3b82f6;
   --color-marked: #dcfce7;
