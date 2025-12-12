@@ -59,15 +59,15 @@ export function StartScreen({ onStart }: StartScreenProps) {
         style={{
           background: 'radial-gradient(ellipse at center, var(--color-nebula-cyan) 0%, var(--color-nebula-violet) 50%, transparent 70%)',
           animation: prefersReducedMotion ? 'none' : 'nebulaPulse 5s ease-in-out infinite',
+          willChange: prefersReducedMotion ? 'auto' : 'transform, opacity',
         }}
       />
 
       {/* Star Clusters - Layer 1 (Background) */}
       <div 
-        className="absolute top-[10%] left-[15%] opacity-60"
+        className="absolute top-[10%] left-[15%] opacity-60 star-cluster-1"
         style={{
           transform: prefersReducedMotion ? 'none' : `translate(${layer3Offset.x}px, ${layer3Offset.y}px)`,
-          animation: prefersReducedMotion ? 'none' : 'float 6s ease-in-out infinite',
         }}
         aria-hidden="true"
       >
@@ -79,10 +79,9 @@ export function StartScreen({ onStart }: StartScreenProps) {
 
       {/* Star Clusters - Layer 2 (Middle) */}
       <div 
-        className="absolute top-[60%] right-[20%] opacity-70"
+        className="absolute top-[60%] right-[20%] opacity-70 star-cluster-2"
         style={{
           transform: prefersReducedMotion ? 'none' : `translate(${layer2Offset.x}px, ${layer2Offset.y}px)`,
-          animation: prefersReducedMotion ? 'none' : 'float 7s ease-in-out infinite 1s',
         }}
         aria-hidden="true"
       >
@@ -95,10 +94,9 @@ export function StartScreen({ onStart }: StartScreenProps) {
 
       {/* Star Clusters - Layer 3 (Foreground) */}
       <div 
-        className="absolute top-[30%] right-[10%] opacity-80"
+        className="absolute top-[30%] right-[10%] opacity-80 star-cluster-3"
         style={{
           transform: prefersReducedMotion ? 'none' : `translate(${layer1Offset.x}px, ${layer1Offset.y}px)`,
-          animation: prefersReducedMotion ? 'none' : 'float 8s ease-in-out infinite 2s',
         }}
         aria-hidden="true"
       >
@@ -225,13 +223,14 @@ export function StartScreen({ onStart }: StartScreenProps) {
       {/* Inline Styles for Animations */}
       <style>{`
         @keyframes nebulaPulse {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 0.5; transform: scale(1.05); }
-        }
-
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
+          0%, 100% { 
+            opacity: 0.3; 
+            transform: scale(1); 
+          }
+          50% { 
+            opacity: 0.5; 
+            transform: scale(1.05); 
+          }
         }
 
         @keyframes typewriterGlow {
@@ -287,6 +286,19 @@ export function StartScreen({ onStart }: StartScreenProps) {
           }
         }
 
+        /* Star cluster floating animations that don't conflict with parallax */
+        .star-cluster-1 {
+          will-change: transform;
+        }
+        
+        .star-cluster-2 {
+          will-change: transform;
+        }
+        
+        .star-cluster-3 {
+          will-change: transform;
+        }
+
         .glass-badge {
           display: flex;
           align-items: center;
@@ -318,7 +330,6 @@ export function StartScreen({ onStart }: StartScreenProps) {
           cursor: pointer;
           overflow: hidden;
           transition: all 0.3s ease;
-          animation: pulseRing 2s infinite;
         }
 
         .cosmic-button::before {
@@ -349,10 +360,29 @@ export function StartScreen({ onStart }: StartScreenProps) {
           background: radial-gradient(circle at center, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
         }
 
+        .cosmic-button:focus-visible {
+          outline: 2px solid var(--color-cosmic-gold);
+          outline-offset: 4px;
+        }
+
         @media (prefers-reduced-motion: reduce) {
-          * {
+          .cosmic-button,
+          .glass-badge,
+          h1,
+          [style*="animation"] {
             animation: none !important;
-            transition: none !important;
+          }
+          
+          /* Preserve essential transitions for accessibility */
+          .cosmic-button:focus-visible,
+          .glass-badge:focus-visible {
+            transition: outline 0.2s ease;
+          }
+        }
+
+        @media (min-width: 641px) and (prefers-reduced-motion: no-preference) {
+          .cosmic-button {
+            animation: pulseRing 2s infinite;
           }
         }
 
