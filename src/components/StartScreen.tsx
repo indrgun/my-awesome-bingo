@@ -62,9 +62,9 @@ export function StartScreen({ onStart }: StartScreenProps) {
       {/* Compact Header - 20% viewport */}
       <header className="flex flex-col items-center justify-center min-h-[20vh] p-6 text-center">
         <h1 
-          className="text-5xl md:text-6xl font-bold text-white mb-2 animate-pulse drop-shadow-[0_0_20px_rgba(0,212,255,0.8)]"
+          className="text-5xl md:text-6xl font-bold text-white mb-2 drop-shadow-[0_0_20px_rgba(0,212,255,0.8)]"
           style={{
-            animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+            animation: 'title-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
           }}
         >
           Soc Ops
@@ -165,8 +165,8 @@ export function StartScreen({ onStart }: StartScreenProps) {
           </button>
           <button
             onClick={() => {
-              // Placeholder for view rules functionality
-              // Could toggle an expandable section or navigate
+              // Scroll to "How It Works" section
+              document.getElementById('how-it-works-heading')?.scrollIntoView({ behavior: 'smooth' });
             }}
             className="px-6 py-4 bg-transparent border-2 border-nebula-cyan text-nebula-cyan font-semibold text-base rounded-xl transition-all duration-300 hover:bg-nebula-cyan/10 hover:shadow-[0_0_20px_rgba(0,212,255,0.4)] active:scale-95 flex-1 sm:flex-initial"
             aria-label="View game rules"
@@ -188,18 +188,6 @@ export function StartScreen({ onStart }: StartScreenProps) {
           </div>
         </div>
       </footer>
-
-      {/* Custom animations */}
-      <style>{`
-        @keyframes pulse-glow {
-          0%, 100% {
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
-          }
-          50% {
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.4);
-          }
-        }
-      `}</style>
     </div>
   );
 }

@@ -26,3 +26,22 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
+
+/* Custom animations for Space Galaxy Glow theme */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.4);
+  }
+}
+
+@keyframes title-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
