@@ -66,13 +66,13 @@ export function StartScreen({ onStart }: StartScreenProps) {
         {/* Single feature line */}
         <p className="text-sm md:text-base text-gray-400 mb-16 max-w-sm mx-auto leading-relaxed">
           Tap squares as you meet people who match{' '}
-          <span className="text-nebula-violet">the questions</span>.
+          <span className="text-[--color-nebula-violet]">the questions</span>.
         </p>
         
         {/* Singular CTA button */}
         <button
           onClick={onStart}
-          className="px-16 py-5 text-white text-lg font-light tracking-wide bg-transparent border-2 border-nebula-cyan rounded-sm transition-all duration-300 hover:border-[#22d3ee] hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] hover:scale-[1.02]"
+          className="px-16 py-5 text-white text-lg font-light tracking-wide bg-transparent border-2 border-[--color-nebula-cyan] rounded-sm transition-all duration-300 hover:border-[#22d3ee] hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] hover:scale-[1.02]"
         >
           Begin
         </button>
