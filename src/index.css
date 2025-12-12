@@ -6,6 +6,13 @@
   --color-marked: #dcfce7;
   --color-marked-border: #22c55e;
   --color-bingo: #fbbf24;
+  
+  /* Space Galaxy Glow palette */
+  --color-nebula-cyan: #00d4ff;
+  --color-cosmic-gold: #ffd700;
+  --color-aurora-green: #00ff88;
+  --color-deep-space: #0a0e27;
+  --color-stellar-purple: #8b5cf6;
 }
 
 html,
