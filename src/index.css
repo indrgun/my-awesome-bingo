@@ -6,6 +6,13 @@
   --color-marked: #dcfce7;
   --color-marked-border: #22c55e;
   --color-bingo: #fbbf24;
+  
+  /* Space Galaxy Glow palette */
+  --color-nebula-cyan: #00d4ff;
+  --color-cosmic-gold: #ffd700;
+  --color-aurora-green: #00ff88;
+  --color-deep-space: #0a0e27;
+  --color-stellar-purple: #8b5cf6;
 }
 
 html,
@@ -18,4 +25,23 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Custom animations for Space Galaxy Glow theme */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.4);
+  }
+}
+
+@keyframes title-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }
